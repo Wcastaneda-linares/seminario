@@ -25,10 +25,11 @@ Sigue estos pasos para instalar y ejecutar el proyecto localmente en tu máquina
 
 1. Clona este repositorio:
    git clone https://github.com/Wcastaneda-linares/seminario.git
+   
    cd seminario
-2. Instala las dependencias del proyecto:
+3. Instala las dependencias del proyecto:
    npm install
-3. Configura las variables de entorno:
+4. Configura las variables de entorno:
    en el archivo .env
-4. Para ejecutar la aplicación en tu entorno local:
+5. Para ejecutar la aplicación en tu entorno local:
    npx nodemon app.js
