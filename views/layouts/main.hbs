@@ -1,31 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>desde hbs</title>
+    <title>{{title}}</title>
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome para los iconos -->
+    <link href="../css/styles.css" rel="stylesheet">
+    
 </head>
+
+
 <body>
     {{{body}}}
-
-
-    <script>
-        function loadContent(url) {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    // Solo actualizamos el contenido del div con id "content"
-                    document.getElementById('content').innerHTML = html;
-                })
-                .catch(error => {
-                    console.error('Hubo un problema con la petición Fetch:', error);
-                });
-        }
-    </script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
