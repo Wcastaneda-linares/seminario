@@ -1,0 +1,18 @@
+body {
+    background-color: #e8f5e9;
+}
+
+.btn {
+    background-color: #388e3c;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #2e7d32;
+}
+
+.form-control {
+    border-radius: 0.25rem;
+}
+li{display: inline;}

@@ -1,0 +1,14 @@
+({titulo_Genera:{
+    type:String,
+    require:true 
+}
+,
+titulo_Tema:{
+type:String,
+require:true
+}
+,
+contenido:{
+    type:String
+}
+})

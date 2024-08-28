@@ -1,0 +1,28 @@
+{
+  "name": "prueba-aplicacion-web-para-seminario-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": " nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bson": "^6.8.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-handlebars": "^8.0.1",
+    "github": "^14.0.0",
+    "handlebars-layouts": "^3.1.4",
+    "hbs": "^4.2.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.3",
+    "nodemon": "^3.1.4"
+  }
+}
