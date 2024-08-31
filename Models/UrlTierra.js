@@ -9,6 +9,10 @@ const tierraSchema = new Schema({
     contenido: {
         type: String,
         required: false
+    },
+    usuario: {
+        type: String,
+        required: true
     }
 });
 

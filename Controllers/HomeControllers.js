@@ -1,4 +1,7 @@
 const UrlTierra = require("../Models/UrlTierra");  // Asegúrate de que la ruta esté correcta
+const UrlRiegos = require("../Models/UrlRiegos");
+const UrlPesticidas = require("../Models/UrlPesticidas");
+const UrlAbonos = require("../Models/UrlAbonos");
 
 const leerurltierras = async (req, res) => {
     try {
@@ -11,9 +14,9 @@ const leerurltierras = async (req, res) => {
     }
 };
 const publicartierras = async (req, res) => {
-   const { titulo, contenido } = req.body;  // Ahora req.body debería estar definido
+   const { titulo, contenido, usuario } = req.body;  // Ahora req.body debería estar definido
     try {
-      const urltierra = new UrlTierra({ titulo: titulo, contenido: contenido });
+      const urltierra = new UrlTierra({ titulo, contenido, usuario });
         console.log(urltierra);
         await urltierra.save();
     
@@ -21,19 +24,87 @@ const publicartierras = async (req, res) => {
     } catch (error) {
        
     }
+}
+// Riegos
+const leerurlriegos = async (req, res) => {
+    try {
+        const urlriegos = await UrlRiegos.find().lean();
+        res.render("riegos", { urlriegos: urlriegos });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error al obtener los riegos.");
+    }
 };
+
+const publicarriegos = async (req, res) => {
+    const { titulo, contenido, usuario } = req.body;
+    try {
+        const urlriego = new UrlRiegos({ titulo, contenido, usuario });
+        await urlriego.save();
+        res.redirect("riegos");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// Pesticidas
+const leerurlpesticidas = async (req, res) => {
+    try {
+        const urlpesticidas = await UrlPesticidas.find().lean();
+        res.render("Pesticidas", { urlpesticidas: urlpesticidas });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error al obtener los pesticidas.");
+    }
+};
+
+const publicarpesticidas = async (req, res) => {
+    const { titulo, contenido, usuario } = req.body;
+    try {
+        const urlpesticida = new UrlPesticidas({ titulo, contenido, usuario });
+        await urlpesticida.save();
+        res.redirect("Pesticidas");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// Abonos
+const leerurlabonos = async (req, res) => {
+    try {
+        const urlabonos = await UrlAbonos.find().lean();
+        res.render("abonos", { urlabonos: urlabonos });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error al obtener los abonos.");
+    }
+};
+
+const publicarabonos = async (req, res) => {
+    const { titulo, contenido, usuario } = req.body;
+    try {
+        const urlabono = new UrlAbonos({ titulo, contenido, usuario });
+        await urlabono.save();
+        res.redirect("abonos");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
 const urlTierras= async (req,res)=>{
-    const tierras=[{titulo:"Suelo arcilloso",contenido:": Este suelo tiene partículas muy pequeñas que se compactan fácilmente, lo que hace que retenga agua y nutrientes en exceso. Los suelos arcillosos pueden ser difíciles de trabajar, pero son ideales para cultivos que necesitan mucha agua, como el arroz. Mejorar su drenaje y aireación puede requerir la adición de arena y materia orgánica."},
-        {titulo:"Suelo arenoso",contenido:"Compuesto por partículas grandes, los suelos arenosos drenan rápidamente y no retienen bien el agua ni los nutrientes. Son fáciles de trabajar, pero los cultivos pueden necesitar riegos más frecuentes y fertilización adicional. Este tipo de suelo es ideal para plantas que prefieren un drenaje rápido, como cactus y otras suculentas."},
-        {titulo:"Suelo limoso",contenido:"Este suelo tiene una textura suave y es rico en nutrientes. Drena mejor que el suelo arcilloso y retiene más agua que el suelo arenoso, lo que lo convierte en un suelo equilibrado ideal para una amplia variedad de cultivos. Los suelos limosos son excelentes para huertos y jardines."},
-        {titulo:"Suelo franco",contenido:"Considerado el tipo de suelo más ideal para la agricultura, el suelo franco es una mezcla equilibrada de arena, limo y arcilla. Este tipo de suelo retiene bien los nutrientes y el agua, pero también drena adecuadamente, proporcionando un entorno óptimo para casi todas las plantas."},
-        {titulo:"Suelo calcáreo",contenido:"Este suelo es alcalino y tiene un alto contenido de cal. Puede ser pobre en nutrientes y no retiene bien el agua. Los suelos calcáreos son adecuados para cultivos que toleran su pH elevado, como lavanda y algunas variedades de uvas. Es posible mejorar su fertilidad mediante la adición de materia orgánica y la corrección del pH."},
-        {titulo:"Suelo orgánico",contenido:": Rico en materia orgánica, como compost y turba, este suelo es muy fértil y retiene bien la humedad. Los suelos orgánicos son ideales para la mayoría de los cultivos hortícolas, ya que proporcionan un ambiente rico en nutrientes y con buena retención de agua."},
-        {titulo:"Suelos adecuados para el cultivo de tomate:",contenido:"  "},
-        {titulo:"1.	Suelo franco",contenido:": Este es el tipo de suelo más recomendado para el tomate debido a su equilibrio perfecto entre retención de agua, drenaje y contenido de nutrientes. Los suelos francos permiten que las raíces del tomate accedan a los nutrientes necesarios mientras se evita el exceso de agua que podría provocar pudrición de raíces."},
-    ];
     return res.render("Tierras",{tierras:tierras})
     
+}
+const urlriegos= async (req,res)=>{
+    return res.render("riegos",{riegos:riegos})
+}
+
+const urlpesticidas= async (req,res)=>{
+    return res.render("Pesticidas",{pesticidas:pesticidas})
+}
+const urlabonos= async (req,res)=>{
+    return res.render("abonos",{abonos:abonos})
 }
 
 const login=(req,res)=>{
@@ -44,5 +115,14 @@ module.exports={
     urlTierras,
     leerurltierras,
     publicartierras,
-    login,
+    urlriegos,
+    leerurlriegos,
+    publicarriegos,
+    leerurlpesticidas,
+    urlpesticidas,
+    publicarpesticidas,
+    urlabonos,
+    leerurlabonos,
+    publicarabonos,
+    login
 }

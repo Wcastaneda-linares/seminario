@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const abonoSchema = new Schema({
+const pesticidaSchema = new Schema({
     titulo: {
         type: String,
         required: true
@@ -16,5 +16,5 @@ const abonoSchema = new Schema({
     }
 });
 
-const UrlAbonos = mongoose.model("Abono", abonoSchema);
-module.exports = UrlAbonos;
+const UrlPesticidas = mongoose.model("Pesticida", pesticidaSchema);
+module.exports = UrlPesticidas;

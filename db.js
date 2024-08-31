@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // Conexión a la base de datos, utilizando la URL proporcionada y una contraseña segura desde las variables de entorno
-const mongoURL = process.env.MONGO_URL || "mongodb+srv://sergio:soy12345@cluster0.lfbhnkz.mongodb.net/plantacion";
+const mongoURL = process.env.MONGO_URL || "mongodb+srv://cfernando35:@cluster0.oyb4k85.mongodb.net/";
 // Conectarse a la base de datos
 mongoose.connect(mongoURL)
     .then(() => {
