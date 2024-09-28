@@ -1,13 +1,13 @@
+{{> Navbar}}
+<h1>Hola desde home</h1>
+<ul>
+    <li>
+        <a href="/register" class="btn btn-outline-success">Usuario: {{this.username}}</a>
+    </li>
+</ul>
 
-    <h1>hola desde home</h1>
-        
-<ul><a href="/tierras">tierras</a></ul>
-<ul><a href="/riegos">riegos</a></ul>
-<ul><a href="/pesticidas">pesticidas</a></ul>
-<ul><a href="/plagas">plagas</a></ul>
-<ul><a href="/abonos">abonos</a></ul>
-<ul><a href="/login">Login</a></ul>
+{{> Forms}}
 
-{{#each tierras }}
-    {{> Cards}}
+{{#each publics}}
+{{> Cards}}
 {{/each}}

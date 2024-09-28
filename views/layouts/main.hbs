@@ -6,12 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
 
+ <link href="../css/styles.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <!-- Font Awesome para los iconos -->
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="/home">Home</a>
+          <a class="nav-item nav-link" href="/foros">Foros</a>
+          <a class="nav-item nav-link" href="/logout">cerrar Sesion</a>
+          
+        </div>
+        <div class="ml-auto navbar-nav">
+          <!-- Mostrar el nombre y correo del usuario autenticado -->
+            <a class="nav-item nav-link">Usuario: {{this.username}}</a>
+            <a class="nav-item nav-link">Correo: {{this.email}}</a>         
+        </div>
+      </div>
+    </div>
+  </nav>
 
     <div class="container mt-3">
     {{{body}}}

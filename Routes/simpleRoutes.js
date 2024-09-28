@@ -1,28 +1,56 @@
-// simpleRoutes.js
 const express = require("express");
-const router = express.Router();
-//const { listados } = require("./auth");
+const {
+    agricultores,
+    publicAgricultores,
+    insertarUsuarios,
+    register,
+    crearPost,
+    leerForos,
+    agregarRespuesta,
+    sesiones,
+    cerrarsesion,
+    agregarPost,
+    leerPublicaciones,
+} = require("../Controllers/HomeControllers");
+const{ verificarToken } = require("../middleware/autenticacion");
+const passport=require('../middleware/Passport')
 
-const { urlTierras, publicartierras } = require("../Controllers/HomeControllers");
-const {login, leerurltierras } = require("../Controllers/HomeControllers");
-router.get("/", (req, res) => {
-    res.render("home")
+
+const router = express.Router();
+
+router.post('/home',verificarToken,agregarPost)
+// Otras rutas que usan el token
+router.get("/agricultores", verificarToken, agricultores);
+router.post("/agricultores", verificarToken, publicAgricultores);
+router.get('/logout',cerrarsesion)
+// Para rutas que no requieren token
+router.get("/",(req,res)=>{    
+    res.render("login");
 });
-router.get('/login',login)
-router.get('/tierras',leerurltierras)
-router.post('/tierras',publicartierras)
-router.get('/riegos', (req, res) => {
-    res.render('riegos')
-})
-router.get('/pesticidas', (req, res) => {
-    res.render('Pesticidas')
-})
-router.get('/plagas', (req, res) => {
-    res.render('plagas')
-})
-router.get('/abonos', (req, res) => {
-    res.render('abonos')
-})
+router.post("/login",sesiones);
+router.get("/register", register);
+router.post("/register", insertarUsuarios);
+// Ruta para crear una nueva pregunta
+router.post("/foros", crearPost);
+router.get("/foros", leerForos);
+// Ruta para agregar una respuesta a una pregunta existente
+router.post("/foros/:id/respuestas", agregarRespuesta);
+router.get('/home', verificarToken, async (req, res) => {
+    try {
+        const publics = await leerPublicaciones(); // Llama a leerPublicaciones para obtener datos
+
+        // Renderiza la vista pasando los datos necesarios
+        return res.render("home", {
+            username: req.user.username,
+            email: req.user.email,
+            publics // Pasa las publicaciones a la vista
+        });
+    } catch (error) {
+        console.error(error);
+        req.flash("mensajes", [{ msg: "Error al cargar las publicaciones." }]);
+        return res.redirect("/"); // Redirige en caso de error
+    }
+});
 
 
 module.exports = router;
