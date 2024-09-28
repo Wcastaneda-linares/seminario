@@ -1,5 +1,6 @@
 const express = require("express");
 const {
+<<<<<<< HEAD
     agricultores,
     publicAgricultores,
     insertarUsuarios,
@@ -52,5 +53,30 @@ router.get('/home', verificarToken, async (req, res) => {
     }
 });
 
+=======
+    leerurltierras,
+    publicartierras,
+    leerurlriegos,
+    publicarriegos,
+    leerurlpesticidas,
+    publicarpesticidas,
+    leerurlabonos,
+    publicarabonos,
+    login
+} = require("../Controllers/HomeControllers");
+
+const router = express.Router();
+router.get("/", (req, res) => res.render("home"));
+router.get("/login", login);
+router.get("/tierras", leerurltierras);
+router.post("/tierras", publicartierras);
+router.get("/riegos", leerurlriegos);
+router.post("/riegos", publicarriegos);
+router.get("/pesticidas", leerurlpesticidas);
+router.post("/pesticidas", publicarpesticidas);
+router.get("/abonos", leerurlabonos);
+router.post("/abonos", publicarabonos);
+>>>>>>> b08051884faac0f40bfb7c018549e0b315ba2123
 
 module.exports = router;
+

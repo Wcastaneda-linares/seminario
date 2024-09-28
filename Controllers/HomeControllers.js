@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const path= require('path')
 const fs= require('fs')
 const formidable= require('formidable')
@@ -41,6 +42,12 @@ const leerPublicaciones = async () => {
 
 const insertarUsuarios = async (req, res) => {
     const { userName, email, password } = req.body;
+=======
+const UrlTierra = require("../Models/UrlTierra");  // Asegúrate de que la ruta esté correcta
+const UrlRiegos = require("../Models/UrlRiegos");
+const UrlPesticidas = require("../Models/UrlPesticidas");
+const UrlAbonos = require("../Models/UrlAbonos");
+>>>>>>> b08051884faac0f40bfb7c018549e0b315ba2123
 
     try {
         // Verificar si el usuario ya existe en MongoDB
@@ -79,6 +86,7 @@ const insertarUsuarios = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+<<<<<<< HEAD
 
 
 const sesiones = async (req, res) => {
@@ -123,12 +131,33 @@ const sesiones = async (req, res) => {
         
         // Redirigir a la página de inicio después de la autenticación
         return res.redirect('/home');
+=======
+const publicartierras = async (req, res) => {
+   const { titulo, contenido, usuario } = req.body;  // Ahora req.body debería estar definido
+    try {
+      const urltierra = new UrlTierra({ titulo, contenido, usuario });
+        console.log(urltierra);
+        await urltierra.save();
+    
+        res.redirect("Tierras");
+>>>>>>> b08051884faac0f40bfb7c018549e0b315ba2123
     } catch (error) {
         console.log(error.message);
         req.flash("mensajes", [{ msg: error.message }]);
         return res.redirect("/");
     }
+}
+// Riegos
+const leerurlriegos = async (req, res) => {
+    try {
+        const urlriegos = await UrlRiegos.find().lean();
+        res.render("riegos", { urlriegos: urlriegos });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error al obtener los riegos.");
+    }
 };
+<<<<<<< HEAD
 const agregarPost = async (req, res) => {
     const { titulo } = req.body; // Extraer el título del cuerpo de la solicitud
     const form = new formidable.IncomingForm();
@@ -210,6 +239,78 @@ const agregarPost = async (req, res) => {
   
 const register =(req, res) =>{
 res.render('register')
+=======
+
+const publicarriegos = async (req, res) => {
+    const { titulo, contenido, usuario } = req.body;
+    try {
+        const urlriego = new UrlRiegos({ titulo, contenido, usuario });
+        await urlriego.save();
+        res.redirect("riegos");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// Pesticidas
+const leerurlpesticidas = async (req, res) => {
+    try {
+        const urlpesticidas = await UrlPesticidas.find().lean();
+        res.render("Pesticidas", { urlpesticidas: urlpesticidas });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error al obtener los pesticidas.");
+    }
+};
+
+const publicarpesticidas = async (req, res) => {
+    const { titulo, contenido, usuario } = req.body;
+    try {
+        const urlpesticida = new UrlPesticidas({ titulo, contenido, usuario });
+        await urlpesticida.save();
+        res.redirect("Pesticidas");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// Abonos
+const leerurlabonos = async (req, res) => {
+    try {
+        const urlabonos = await UrlAbonos.find().lean();
+        res.render("abonos", { urlabonos: urlabonos });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error al obtener los abonos.");
+    }
+};
+
+const publicarabonos = async (req, res) => {
+    const { titulo, contenido, usuario } = req.body;
+    try {
+        const urlabono = new UrlAbonos({ titulo, contenido, usuario });
+        await urlabono.save();
+        res.redirect("abonos");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
+const urlTierras= async (req,res)=>{
+    return res.render("Tierras",{tierras:tierras})
+    
+>>>>>>> b08051884faac0f40bfb7c018549e0b315ba2123
+}
+const urlriegos= async (req,res)=>{
+    return res.render("riegos",{riegos:riegos})
+}
+
+const urlpesticidas= async (req,res)=>{
+    return res.render("Pesticidas",{pesticidas:pesticidas})
+}
+const urlabonos= async (req,res)=>{
+    return res.render("abonos",{abonos:abonos})
 }
 
 
@@ -306,6 +407,7 @@ const cerrarsesion = (req, res) => {
 
 
 module.exports={
+<<<<<<< HEAD
     login,
     agricultores,
     publicAgricultores,
@@ -319,4 +421,19 @@ module.exports={
     agregarPost,
     leerPublicaciones,
     leermispublicaciones,
+=======
+    urlTierras,
+    leerurltierras,
+    publicartierras,
+    urlriegos,
+    leerurlriegos,
+    publicarriegos,
+    leerurlpesticidas,
+    urlpesticidas,
+    publicarpesticidas,
+    urlabonos,
+    leerurlabonos,
+    publicarabonos,
+    login
+>>>>>>> b08051884faac0f40bfb7c018549e0b315ba2123
 }

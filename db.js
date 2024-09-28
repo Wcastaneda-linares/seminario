@@ -2,6 +2,7 @@ const mysql = require("mysql2/promise");
 const mongoose = require("mongoose");
 require('dotenv').config();  // Cargar variables de entorno
 
+<<<<<<< HEAD
 // Configuración de MySQL
 const pool = mysql.createPool({
     host: "localhost",
@@ -11,6 +12,27 @@ const pool = mysql.createPool({
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
+=======
+// Cargar variables de entorno desde un archivo .env
+require('dotenv').config();
+
+// Conexión a la base de datos, utilizando la URL proporcionada y una contraseña segura desde las variables de entorno
+const mongoURL = process.env.MONGO_URL || "mongodb+srv://cfernando35:@cluster0.oyb4k85.mongodb.net/";
+// Conectarse a la base de datos
+mongoose.connect(mongoURL)
+    .then(() => {
+        console.log('Database connected');
+    })
+    .catch((error) => {
+        console.error('connection error:', error);
+    });
+
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+    console.log('Database connected and ready😍');
+>>>>>>> b08051884faac0f40bfb7c018549e0b315ba2123
 });
 
 // Configuración de MongoDB usando la URL desde variables de entorno
