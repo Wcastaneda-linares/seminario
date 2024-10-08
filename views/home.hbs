@@ -1,13 +1,27 @@
+{{> Navbar}}
+<h1>Hola desde home</h1>
+<ul>
+    <li>
+        <a href="/register" class="btn btn-outline-success">Usuario: {{this.username}}</a>
+    </li>
+</ul>
 
-    <h1>hola desde home</h1>
-        
-<ul><a href="/tierras">tierras</a></ul>
-<ul><a href="/riegos">riegos</a></ul>
-<ul><a href="/pesticidas">pesticidas</a></ul>
-<ul><a href="/plagas">plagas</a></ul>
-<ul><a href="/abonos">abonos</a></ul>
-<ul><a href="/login">Login</a></ul>
-
-{{#each tierras }}
-    {{> Cards}}
+{{> Forms}}
+<!---->
+{{#each publicaciones}}
+  <h2>{{this.name}}</h2>
+  {{#if this.tieneMultiplesImagenes}}
+    <div class="galeria">
+      {{#each this.imagenes}}
+        <span>
+          <img src="{{this}}" alt="Imagen">
+        </span>
+      {{/each}}
+    </div>
+  {{else}}
+    <span>
+      <img src="{{this.imagenes}}" alt="Imagen única">
+    </span>
+  {{/if}}
+  <button class="btn btn-success">WhatsApp</button>
 {{/each}}

@@ -1,5 +1,6 @@
 body {
     background-color: #e8f5e9;
+    align-items: center;
 }
 
 .btn {
@@ -15,4 +16,3 @@ body {
 .form-control {
     border-radius: 0.25rem;
 }
-li{display: inline;}
