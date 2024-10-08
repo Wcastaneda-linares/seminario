@@ -1,19 +1,12 @@
-<!-- formulario.hbs -->
-<form id="/Tierras" method="post">
+
+<form id="/home" method="post" enctype="multipart/form-data">
     <input type="text" name="titulo" placeholder="Título">
-    <textarea name="contenido" placeholder="Contenido"></textarea>
+   <div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+  <input class="form-control" type="file" id="formFileMultiple" name="myFile" multiple>
+</div>
     <button type="submit" class="btn btn-primary">Subir</button>
 </form>
 
-<!-- Script que se ejecutará cuando se renderice el componente
-<script>
-    const aquitoy=window.location.pathname;
-    document.write(aquitoy);
-    document.addEventListener('DOMContentLoaded', function () {
-        const currentPath = window.location.pathname;
-        const form = document.getElementById('dynamicForm');
-        form.action = currentPath;
-    });
-</script>
- -->
+
 
