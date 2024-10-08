@@ -18,10 +18,13 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+<<<<<<< HEAD
     },
     telefono:{
         type:String,
         required: true
+=======
+>>>>>>> f777a61d2bcc15da0bfab0648a118cedd4a599ba
     }
 });
 

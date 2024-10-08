@@ -19,26 +19,42 @@
     "bootstrap": "^5.3.3",
     "bson": "^6.8.0",
     "connect-flash": "^0.1.1",
+<<<<<<< HEAD
     "connect-mongo": "^4.6.0",
     "cookie": "^0.7.0",
+=======
+>>>>>>> f777a61d2bcc15da0bfab0648a118cedd4a599ba
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "express-handlebars": "^8.0.1",
+<<<<<<< HEAD
     "express-session": "^1.0.0",
+=======
+    "express-session": "^1.18.0",
+>>>>>>> f777a61d2bcc15da0bfab0648a118cedd4a599ba
     "formidable": "^3.5.1",
     "github": "^14.0.0",
     "handlebars-layouts": "^3.1.4",
     "hbs": "^4.2.0",
     "jimp": "^1.6.0",
     "jsonwebtoken": "^9.0.2",
+<<<<<<< HEAD
     "mongoose": "^8.5.3",
     "mssql": "^11.0.1",
+=======
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.3",
+>>>>>>> f777a61d2bcc15da0bfab0648a118cedd4a599ba
     "mysql2": "^3.11.0",
     "nodemon": "^3.1.4",
     "p-limit": "^6.1.0",
     "passport": "^0.7.0",
+<<<<<<< HEAD
     "passport-local": "^1.0.0",
     "uid2": "^1.0.0"
+=======
+    "passport-local": "^1.0.0"
+>>>>>>> f777a61d2bcc15da0bfab0648a118cedd4a599ba
   }
 }
