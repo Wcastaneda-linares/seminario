@@ -18,10 +18,19 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae07c1f16097f2dd8f4e085f4348731062b7cd51
     },
     telefono:{
         type:String,
         required: true
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f777a61d2bcc15da0bfab0648a118cedd4a599ba
+>>>>>>> ae07c1f16097f2dd8f4e085f4348731062b7cd51
     }
 });
 
